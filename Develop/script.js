@@ -2,9 +2,9 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-var presentDay = ""; //placeholder string for date
-var presentDayString = "" //placeholder for todays date display
-var presentHour = 9; //default to first working hour
+var currentDay = ""; //placeholder string for date
+var currentDayString = "" //placeholder for todays date display
+var currentHour = 9; //default to first working hour
 var timeEntries = [];
 
 const timeEntriesName = "workDaySchedulerList"; //local stroage name
