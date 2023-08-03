@@ -3,7 +3,7 @@
 
 ## Project Description 
 
-This project involved creating a simple calendar application that allows a user to save events for each hour of the working day from 9am - 5pm.
+This project involved creating a simple calendar application that allows a user to save events for each hour of the working day from 9am - 5pm. This website will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
 Below is a summary of the changes/additions that have been made to the original HTML and Javascript file.
 
