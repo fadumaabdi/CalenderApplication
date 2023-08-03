@@ -20,9 +20,7 @@ setCurrentDateAndHour(); // Set current date/datestring/hour and display in head
 buildTimeBlocks(); // Build rest of html for page
 getTimeEntries(); // See if there are entries in localstorage and load them
 
-$(".saveBtn").click(saveClick); // Set event handler for all save buttons
-
-$(function setCurrentDateAndHour () {
+function setCurrentDateAndHour () {
   var today = new Date();
   var day = today.getDate();
   var dayEnd = "th";
@@ -54,4 +52,4 @@ $(function setCurrentDateAndHour () {
     $("#currentDay").text(currentDateString); // set header date
   }
 
-});
+}
