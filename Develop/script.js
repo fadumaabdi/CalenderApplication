@@ -20,7 +20,7 @@ setCurrentDateAndHour(); // Set current date/datestring/hour and display in head
 buildTimeBlocks(); // Build rest of html for page
 getTimeEntries(); // See if there are entries in localstorage and load them
 
-function setCurrentDateAndHour () {
+function setCurrentDateAndHour() {
   var today = new Date();
   var day = today.getDate();
   var dayEnd = "th";
@@ -30,10 +30,10 @@ function setCurrentDateAndHour () {
   if (day < 10) {
     currentDate = today.getFullYear() + months[today.getMonth()] + "0" + day;
   }
-    else {
-      currentDate = today.getFullYear() + months[today.getMonth()] + day;
-    }
-  
+  else {
+    currentDate = today.getFullYear() + months[today.getMonth()] + day;
+  }
+
   // Add correct day suffix
   if ((day === 1) || (day === 21) || (day === 31)) {
     dayEnd = "st";
@@ -45,31 +45,58 @@ function setCurrentDateAndHour () {
     dayEnd = "rd";
   }
 
-    currentDateString = days[today.getDay()] + ", " + months[today.getMonth()] + " " +
-      day + dayEnd + ", " + today.getFullYear(); // date string to display in header
-    $("#currentDay").text(currentDateString); // set header date
+  currentDateString = days[today.getDay()] + ", " + months[today.getMonth()] + " " +
+    day + dayEnd + ", " + today.getFullYear(); // date string to display in header
+  $("#currentDay").text(currentDateString); // set header date
 }
 
 
-    //Assign saveBtn click listener for user input and time stamp
-    $(".saveBtn").on("click", function () {
-      //get nearby values.
-      console.log(this);
-      var text = $(this).siblings(".description").val();
-      var time = $(this).parent().attr("id");
+//Assign saveBtn click listener for user input and time stamp
+$(".saveBtn").on("click", function () {
+  //get nearby values.
+  console.log(this);
+  var text = $(this).siblings(".description").val();
+  var time = $(this).parent().attr("id");
 
-      //set items in local storage.
-      localStorage.setItem(time, text);
-  }) 
-  //load any saved data from LocalStorage - do this for each hour created.
-  $("#hour9 .description").val(localStorage.getItem("hour9"));
-  $("#hour10 .description").val(localStorage.getItem("hour10"));
-  $("#hour11 .description").val(localStorage.getItem("hour11"));
-  $("#hour12 .description").val(localStorage.getItem("hour12"));
-  $("#hour13 .description").val(localStorage.getItem("hour13"));
-  $("#hour14 .description").val(localStorage.getItem("hour14"));
-  $("#hour15 .description").val(localStorage.getItem("hour15"));
-  $("#hour16 .description").val(localStorage.getItem("hour16"));
-  $("#hour17 .description").val(localStorage.getItem("hour17"));
+  //set items in local storage.
+  localStorage.setItem(time, text);
+})
+//load any saved data from LocalStorage - do this for each hour created.
+$("#hour9 .description").val(localStorage.getItem("hour9"));
+$("#hour10 .description").val(localStorage.getItem("hour10"));
+$("#hour11 .description").val(localStorage.getItem("hour11"));
+$("#hour12 .description").val(localStorage.getItem("hour12"));
+$("#hour13 .description").val(localStorage.getItem("hour13"));
+$("#hour14 .description").val(localStorage.getItem("hour14"));
+$("#hour15 .description").val(localStorage.getItem("hour15"));
+$("#hour16 .description").val(localStorage.getItem("hour16"));
+$("#hour17 .description").val(localStorage.getItem("hour17"));
 
-  
+function hourTracker() {
+  //get current number of hours.
+  var currentHour = moment().hour();
+
+  // loop over time blocks
+  $(".time-block").each(function () {
+      var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+      console.log( blockHour, currentHour)
+
+      //check if we've moved past this time
+      if (blockHour < currentHour) {
+          $(this).addClass("past");
+          $(this).removeClass("future");
+          $(this).removeClass("present");
+      }
+      else if (blockHour === currentHour) {
+          $(this).removeClass("past");
+          $(this).addClass("present");
+          $(this).removeClass("future");
+      }
+      else {
+          $(this).removeClass("present");
+          $(this).removeClass("past");
+          $(this).addClass("future");
+      }
+  })
+}
+hourTracker();
