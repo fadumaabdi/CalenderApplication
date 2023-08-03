@@ -27,7 +27,6 @@ function setCurrentDateAndHour () {
   currentHour = today.getHours();
 
   // display dates <10 with a 0 e.g 03
-
   if (day < 10) {
     currentDate = today.getFullYear() + months[today.getMonth()] + "0" + day;
   }
@@ -35,8 +34,6 @@ function setCurrentDateAndHour () {
       currentDate = today.getFullYear() + months[today.getMonth()] + day;
     }
   
-
-
   // Add correct day suffix
   if ((day === 1) || (day === 21) || (day === 31)) {
     dayEnd = "st";
@@ -46,10 +43,11 @@ function setCurrentDateAndHour () {
   }
   else if ((day === 3) || (day === 23)) {
     dayEnd = "rd";
+  }
 
     currentDateString = days[today.getDay()] + ", " + months[today.getMonth()] + " " +
       day + dayEnd + ", " + today.getFullYear(); // date string to display in header
     $("#currentDay").text(currentDateString); // set header date
-  }
-
 }
+
+    
