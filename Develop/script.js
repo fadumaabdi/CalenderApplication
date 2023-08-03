@@ -10,11 +10,15 @@ var timeEntries = [];
 const timeEntriesName = "workDaySchedulerList"; //local stroage name
 const firstEntry = 9; //9am
 const lastEntry = 17; //5pm
-const workingHours = ["12AM","1AM","2AM","3AM","4AM","5AM","6AM","7AM","8AM","9AM","10AM","11AM","12PM",
-"1PM","2PM","3PM","4PM","5PM","6PM","7PM","8PM","9PM","10PM","11PM"];
+const workingHours = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM",
+  "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const months = ["January", "February", "March", "April", "May", "June", 
-                "July", "August", "September", "October", "November", "December"];
+const months = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+
+setCurrentDateAndHour(); // Set current date/datestring/hour and display in header
+buildTimeBlocks(); // Build rest of html for page
+getTimeEntries(); // See if there are entries in localstorage and load them
 
 
 
